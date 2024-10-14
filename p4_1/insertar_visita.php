@@ -1,27 +1,25 @@
-<!--insertar_visita.php: página que almacena el comentario del
-visitante. Es una página que no se muestra en el navegador. Una
-vez introducido un comentario se redirecciona automáticamente
-a la página “libro_visitas.php”.-->
 <?php
-// Verificar si se ha enviado un archivo
-if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] == 0) {
-    $nombreArchivo = $_FILES['archivo']['name'];
-    $rutaTemporal = $_FILES['archivo']['tmp_name'];
-    $tamanioArchivo = $_FILES['archivo']['size'];
-    $directorioDestino = __DIR__ . '/descargas/' . $nombreArchivo;
+// Verificar que la petición sea un POST y que el campo 'comentario' esté presente
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comentario'])) {
+    // Recortar espacios en blanco alrededor del comentario
+    $comentario = trim($_POST['comentario']);
 
-    // Mover el archivo al directorio de descargas
-    if (move_uploaded_file($rutaTemporal, $directorioDestino)) {
-        echo "<h1>Archivo subido con éxito</h1>";
-        echo "<p>Nombre: $nombreArchivo</p>";
-        echo "<p>Tamaño: " . round($tamanioArchivo / 1024, 2) . " KB</p>";
+    // Validar que el comentario no esté vacío
+    if (!empty($comentario)) {
+        // Definir el archivo donde se guardarán los comentarios
+        $file = 'visitas.txt';
+
+        // Añadir el comentario al archivo, con un salto de línea
+        file_put_contents($file, $comentario . PHP_EOL, FILE_APPEND);
+
+        // Redirigir al usuario de vuelta a la página de comentarios después de guardar
+        header('Location: libro_visitas.php');
+        exit;
     } else {
-        echo "<h1>Error al subir el archivo</h1>";
+        // Si el comentario está vacío, mostrar un mensaje de error
+        echo "El comentario no puede estar vacío.";
     }
 } else {
-    echo "<h1>No se ha subido ningún archivo</h1>";
+    // Si se accede a esta página sin enviar el formulario, mostrar un mensaje de error
+    echo "Acceso no válido.";
 }
-?>
-<br>
-<a href="subir.php">Subir otro archivo</a><br>
-<a href="listar.php">Listar archivos</a>

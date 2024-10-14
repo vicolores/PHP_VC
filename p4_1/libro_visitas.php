@@ -1,46 +1,34 @@
-*****************************************************
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Listar Archivos</title>
+    <title>Libro de Visitas</title>
 </head>
 <body>
-    <h1>Lista de Archivos</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre del Archivo</th>
-                <th>Tamaño (KB)</th>
-                <th>Enlace</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $directorio = __DIR__ . '/descargas';
-            $archivos = scandir($directorio);
+    <h1>Comentarios de los Visitantes</h1>
 
-            // Filtrar archivos válidos
-            $archivos = array_filter($archivos, function ($archivo) use ($directorio) {
-                return is_file($directorio . '/' . $archivo);
-            });
+    <?php
+    // Definir el nombre del archivo donde se guardan los comentarios
+    $file = 'visitas.txt';
 
-            // Ordenar archivos alfabéticamente
-            sort($archivos);
+    // Verificar si el archivo existe antes de intentar leerlo
+    if (file_exists($file)) {
+        // Leer el contenido del archivo línea por línea, ignorando líneas vacías
+        $visitas = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-            foreach ($archivos as $archivo) {
-                $rutaArchivo = 'descargas/' . $archivo;
-                $tamanioArchivo = round(filesize($directorio . '/' . $archivo) / 1024, 2);
+        // Mostrar cada comentario en un párrafo
+        foreach ($visitas as $visita) {
+            echo "<p>" . htmlspecialchars($visita) . "</p>";
+        }
+    } else {
+        // Si el archivo no existe o no hay comentarios, mostrar este mensaje
+        echo "<p>No hay comentarios aún.</p>";
+    }
+    ?>
 
-                echo "<tr>";
-                echo "<td>$archivo</td>";
-                echo "<td>$tamanioArchivo KB</td>";
-                echo "<td><a href=\"$rutaArchivo\" download>Descargar</a></td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-    <br>
-    <a href="subir.php">Subir otro archivo</a>
+    <!-- Enlace para añadir un nuevo comentario -->
+    <a href="nueva_visita.php">Añadir Comentario</a><br><br>
+
+    <!-- Enlace para volver a la página de inicio -->
+    <a href="index.php">Volver al inicio</a>
 </body>
 </html>
