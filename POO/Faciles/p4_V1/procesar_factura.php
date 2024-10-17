@@ -1,16 +1,14 @@
 <?php
-require_once 'factura.php';
+require_once 'Factura.php';
 session_start();
 
 // Obtener los valores del formulario
 $precioUnidad = $_POST['precioUnidad'];
 $numUnidades = $_POST['numUnidades'];
-$iva = $_POST['iva'];
-$descuento = $_POST['descuento'];
 
 // Crear o recuperar la factura de la sesión
 if (!isset($_SESSION['factura'])) {
-    $_SESSION['factura'] = new Factura($iva, $descuento);
+    $_SESSION['factura'] = new Factura(); // Crear con valores por defecto
 }
 $factura = $_SESSION['factura'];
 
@@ -20,5 +18,6 @@ $factura->agregarLineaFactura($precioUnidad, $numUnidades);
 // Guardar la factura en la sesión
 $_SESSION['factura'] = $factura;
 
-// Mostrar la factura
-echo $factura;
+// Redirigir para mostrar la factura
+header("Location: mostrar_factura.php");
+exit;

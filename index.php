@@ -46,6 +46,7 @@
 <a href="POO/Faciles/p3/index.php">Ejecutar POO p3</a><br/>
 <a href="POO/Faciles/p4/index.php">Ejecutar POO p4</a><br/>
 <a href="POO/Faciles/p4_V1/index.php">Ejecutar POO p4_v1</a><br/>
+<a href="POO/Faciles/p4_V2/index.php">Ejecutar POO p4_v2</a><br/>
 
 </body>
 </html>

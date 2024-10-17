@@ -14,12 +14,6 @@
         <label for="numUnidades">Número de unidades:</label>
         <input type="number" id="numUnidades" name="numUnidades" required><br><br>
 
-        <label for="iva">IVA (%):</label>
-        <input type="number" id="iva" name="iva" value="21" required><br><br>
-
-        <label for="descuento">Descuento (%):</label>
-        <input type="number" id="descuento" name="descuento" value="0" required><br><br>
-
         <button type="submit">Agregar a la factura</button>
     </form>
 
@@ -29,6 +23,16 @@
         <input type="number" id="indice" name="indice" required><br><br>
 
         <button type="submit">Eliminar línea</button>
+    </form>
+
+    <h2>Ver Factura Completa</h2>
+    <form action="mostrar_factura.php" method="post">
+        <button type="submit">Mostrar Factura</button>
+    </form>
+
+    <h2>Ver Líneas de Pedido</h2>
+    <form action="mostrar_factura.php" method="post">
+        <button type="submit">Mostrar Líneas de Pedido</button>
     </form>
 </body>
 </html>
