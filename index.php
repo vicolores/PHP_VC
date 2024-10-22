@@ -47,6 +47,14 @@
 <a href="POO/Faciles/p4/index.php">Ejecutar POO p4</a><br/>
 <a href="POO/Faciles/p4_V1/index.php">Ejecutar POO p4_v1</a><br/>
 <a href="POO/Faciles/p4_V2/index.php">Ejecutar POO p4_v2</a><br/>
+<a href="POO/Repaso/p1/index1.php">Ejecutar POO Repaso p1</a><br/>
+<a href="POO/Repaso/p1/index2.php">Ejecutar POO Repaso p1.1</a><br/>
+<a href="POO/Repaso/p1/index3.php">Ejecutar POO Repaso p1.2</a><br/>
+<a href="POO/Repaso/p2/index.php">Ejecutar POO Repaso p2</a><br/>
+<a href="POO/Repaso/p3/index.php">Ejecutar POO Repaso p3</a><br/>
+<a href="POO/Repaso/p3/index1.php">Ejecutar POO Repaso p3.1</a><br/>
+<a href="POO/Repaso/p4/index.php">Ejecutar POO Repaso p4</a><br/>
+<a href="POO/Repaso/p4/index1.php">Ejecutar POO Repaso p4.1</a><br/>
 
 </body>
 </html>
